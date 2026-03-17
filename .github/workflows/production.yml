@@ -76,6 +76,7 @@ jobs:
           go-version: '1.24.0'
 
       - name: Build Server
+        if: matrix.goos != 'android' && matrix.goos != 'darwin'
         run: |
           mkdir -p dist
           CGO_ENABLED=0 GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} \
